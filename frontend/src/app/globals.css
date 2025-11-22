@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom utilities for brutalist design */
+@layer utilities {
+  .shadow-brutalist {
+    box-shadow: 8px 8px 0 #1A1D2E;
+  }
+  .shadow-brutalist-sm {
+    box-shadow: 4px 4px 0 #1A1D2E;
+  }
+  .shadow-brutalist-hover {
+    box-shadow: 6px 6px 0 #1A1D2E;
+  }
+  .border-3 {
+    border-width: 3px;
+  }
+  .rounded-brutalist {
+    border-radius: 12px;
+  }
+  .rounded-brutalist-lg {
+    border-radius: 20px;
+  }
+}
+
+:root {
+  --orange-fire: #FF5810;
+  --orange-hover: #E64D0A;
+  --charcoal: #1A1D2E;
+  --charcoal-light: #2D3142;
+  --sage-green: #10B981;
+  --sage-dark: #059669;
+  --cream: #FFFBF5;
+  --cream-dark: #FFF5E6;
+  --text-primary: #1A1D2E;
+  --text-secondary: #4A5568;
+  --text-muted: #718096;
+  --accent-yellow: #FCD34D;
+  --accent-red: #EF4444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Brutalist noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)" opacity="0.03"/%3E%3C/svg%3E');
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+}
+
+/* Ensure content is above the noise texture */
+#__next,
+main {
+  position: relative;
+  z-index: 2;
+}
+
+/* Custom scrollbar for brutalist aesthetic */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream-dark);
+  border-left: 2px solid var(--charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--orange-fire);
+  border: 2px solid var(--charcoal);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange-hover);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--orange-fire);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--orange-fire);
+  color: white;
+}
+
+/* Animations */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

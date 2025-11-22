@@ -1,0 +1,53 @@
+.default-animation {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.default-animation--scene {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  perspective: 1000px;
+}
+
+.cube {
+  position: relative;
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+}
+
+.cube-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--cube-face-bg, #060010);
+  border: var(--cube-face-border, 1px solid #fff);
+  box-shadow: var(--cube-face-shadow, none);
+  backface-visibility: hidden;
+}
+
+.cube-face--top {
+  transform: rotateX(90deg) translateZ(50%);
+}
+
+.cube-face--bottom {
+  transform: rotateX(-90deg) translateZ(50%);
+}
+
+.cube-face--left {
+  transform: rotateY(-90deg) translateZ(50%);
+}
+
+.cube-face--right {
+  transform: rotateY(90deg) translateZ(50%);
+}
+
+.cube-face--front {
+  transform: translateZ(50%);
+}
+
+.cube-face--back {
+  transform: rotateY(180deg) translateZ(50%);
+}
