@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getReports } from '@/lib/api/reports';
-import type { Report, ReportType } from '@/types/api';
+import { Report, ReportType } from '@/types/api';
 
 type TabType = 'weekly' | 'monthly' | 'all';
 
@@ -30,9 +30,9 @@ export default function ReportsPage() {
     try {
       const reportType: ReportType | undefined =
         activeTab === 'weekly'
-          ? 'weekly'
+          ? ReportType.WEEKLY
           : activeTab === 'monthly'
-          ? 'monthly'
+          ? ReportType.MONTHLY
           : undefined;
 
       const response = await getReports(locationId, reportType, page, pageSize);

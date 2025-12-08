@@ -34,7 +34,7 @@ export const contentBrandSchema = z.object({
 
 // Step 4: Autonomy & Control validation
 export const autonomyControlSchema = z.object({
-  globalAutonomy: z.enum(['draft', 'approve', 'autopilot']).optional(),
+  globalAutonomy: z.enum(['draft', 'autopilot']).optional(),
   blackoutStart: z.string().optional(),
   blackoutEnd: z.string().optional(),
 });

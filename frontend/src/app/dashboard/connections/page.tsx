@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@clerk/nextjs';
 import { toast } from 'react-hot-toast';
-import { ConnectAccounts } from '@/components/onboarding/steps/ConnectAccounts';
+import { GoogleConnectionManager } from '@/components/dashboard/GoogleConnectionManager';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
@@ -25,7 +25,6 @@ export default function ConnectionsPage() {
 
   const fetchLocation = async () => {
     try {
-      // Get token using Clerk's useAuth hook
       const token = await getToken();
       
       if (!token) {
@@ -34,7 +33,6 @@ export default function ConnectionsPage() {
         return;
       }
 
-      // Fetch user's location
       const response = await fetch(`${API_URL}/api/locations/me`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -49,7 +47,6 @@ export default function ConnectionsPage() {
       const data = await response.json();
 
       if (!data || !data.id) {
-        // User hasn't completed onboarding yet
         toast.error('Please complete onboarding first');
         router.push('/onboarding');
         return;
@@ -91,12 +88,14 @@ export default function ConnectionsPage() {
         <div className="mb-8">
           <h1 className="font-display text-5xl text-charcoal mb-3">Connections</h1>
           <p className="text-text-secondary text-lg">
-            Manage your integrations with Google, WordPress, and social media platforms
+            Manage your integrations with Google, WordPress, and social media platforms.
           </p>
         </div>
 
-        {/* Reuse the ConnectAccounts component from onboarding */}
-        <ConnectAccounts locationId={locationId} />
+        <div className="space-y-6">
+          <GoogleConnectionManager locationId={locationId} />
+          {/* Other connection managers can be added here */}
+        </div>
       </div>
     </div>
   );

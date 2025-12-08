@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@clerk/nextjs';
 import { toast } from 'react-hot-toast';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
-export default function GoogleOAuthCallback() {
+function GoogleOAuthCallbackContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { getToken, isLoaded, isSignedIn } = useAuth();
@@ -276,5 +276,22 @@ export default function GoogleOAuthCallback() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function GoogleOAuthCallback() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-cream flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-orange-fire border-t-transparent mb-4"></div>
+          <h2 className="font-heading text-2xl font-bold text-charcoal">
+            Loading OAuth callback...
+          </h2>
+        </div>
+      </div>
+    }>
+      <GoogleOAuthCallbackContent />
+    </Suspense>
   );
 }

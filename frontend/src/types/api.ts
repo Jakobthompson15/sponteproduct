@@ -110,3 +110,34 @@ export interface LatestReportsResponse {
   weekly: Report | null;
   monthly: Report | null;
 }
+
+// Agent & Draft Types
+export type GbpCta =
+  | 'BOOK'
+  | 'CALL'
+  | 'ORDER'
+  | 'LEARN_MORE'
+  | 'SHOP'
+  | 'SIGN_UP';
+
+export interface GbpDraft {
+  id: string; // This is the AgentOutput ID
+  content: string;
+  call_to_action: GbpCta;
+  status: 'DRAFT' | 'APPROVED' | 'REJECTED' | 'POSTED';
+  created_at: string;
+}
+
+export interface AgentOutput {
+  id: string;
+  task_id: string;
+  location_id: string;
+  output_type: string;
+  status: string;
+  content: string;
+  call_to_action?: GbpCta;
+  platform_post_id?: string;
+  output_metadata?: Record<string, unknown>;
+  created_at: string;
+  posted_at?: string;
+}

@@ -3,17 +3,31 @@ import { ButtonHTMLAttributes, forwardRef } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary';
+  size?: 'default' | 'sm';
   isLoading?: boolean;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'primary', isLoading, children, disabled, ...props }, ref) => {
+  (
+    {
+      className,
+      variant = 'primary',
+      size = 'default',
+      isLoading,
+      children,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <button
         ref={ref}
         disabled={disabled || isLoading}
         className={cn(
-          'px-8 py-4 rounded-lg font-heading font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed',
+          'rounded-lg font-heading font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed',
+          size === 'default' && 'px-8 py-4',
+          size === 'sm' && 'px-4 py-2 text-sm',
           variant === 'primary' &&
             'bg-orange-fire text-white hover:bg-orange-hover shadow-brutalist-sm hover:translate-y-[-2px] hover:shadow-brutalist',
           variant === 'secondary' &&

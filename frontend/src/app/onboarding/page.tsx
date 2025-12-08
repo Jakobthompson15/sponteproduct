@@ -50,7 +50,7 @@ export default function OnboardingPage() {
     resolver: zodResolver(completeOnboardingSchema),
     mode: 'onBlur',
     defaultValues: {
-      globalAutonomy: 'approve', // Default to approve mode
+      globalAutonomy: 'draft', // Default to draft mode
       blogCadence: 'monthly',
       gbpCadence: 'weekly',
       weeklyReport: true,
