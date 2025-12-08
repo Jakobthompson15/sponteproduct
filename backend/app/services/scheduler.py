@@ -278,7 +278,7 @@ def create_gbp_tasks():
                         # Auto-approve
                         output = GBPAgentService.approve_post(db, output.id)
 
-                        # Mark as "posted" (Phase 3 will actually post to GBP)
+                        # Post to Google Business Profile
                         output = GBPAgentService.mark_as_posted(db, output.id)
 
                         posts_auto_generated += 1
