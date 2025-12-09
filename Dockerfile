@@ -22,5 +22,5 @@ COPY test_env.py .
 # Expose port (Railway will override with PORT env var)
 EXPOSE 8000
 
-# Test environment variables first, then start the app
-CMD sh -c "python test_env.py && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"
+# Debug and start the app
+CMD sh -c "env | grep -E 'DATABASE_URL|ENVIRONMENT|SECRET_KEY' && python test_env.py && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"

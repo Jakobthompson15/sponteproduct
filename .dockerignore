@@ -1,0 +1,32 @@
+# Ignore .env files - we want to use Railway's environment variables
+backend/.env
+backend/.env.local
+backend/.env.production
+.env
+.env.local
+.env.production
+
+# Python stuff
+**/__pycache__
+**/*.pyc
+backend/venv/
+backend/env/
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+
+# Documentation
+*.md
+README.md
+
+# Frontend (we only need backend in Docker)
+frontend/
+
+# Database files
+*.db
+*.sqlite
