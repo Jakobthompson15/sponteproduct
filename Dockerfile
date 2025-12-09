@@ -24,4 +24,4 @@ COPY check_port.py .
 EXPOSE 8000
 
 # Start the app - Railway sets PORT environment variable
-CMD sh -c "python check_port.py && echo 'Starting on port: '${PORT:-8000} && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"
+CMD sh -c "python check_port.py && echo \"Starting on port: ${PORT:-8000}\" && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"
