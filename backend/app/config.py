@@ -10,14 +10,16 @@ from typing import List
 class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
-    # Supabase Configuration
-    SUPABASE_URL: str
-    SUPABASE_ANON_KEY: str
-    SUPABASE_SERVICE_KEY: str
+    # Database Configuration
     DATABASE_URL: str
 
+    # Supabase Configuration (optional - not used when using direct PostgreSQL)
+    SUPABASE_URL: str = ""
+    SUPABASE_ANON_KEY: str = ""
+    SUPABASE_SERVICE_KEY: str = ""
+
     # Application Settings
-    SECRET_KEY: str
+    SECRET_KEY: str = "your-secret-key-here-change-in-production"
     ENVIRONMENT: str = "development"
     API_V1_PREFIX: str = "/api"
 
@@ -27,8 +29,8 @@ class Settings(BaseSettings):
     # Anthropic API (optional for now)
     ANTHROPIC_API_KEY: str = ""
 
-    # Resend API (Email Service)
-    RESEND_API_KEY: str
+    # Resend API (Email Service - optional)
+    RESEND_API_KEY: str = ""
 
     # Clerk Configuration
     CLERK_PUBLISHABLE_KEY: str = ""
@@ -40,7 +42,7 @@ class Settings(BaseSettings):
     GOOGLE_REDIRECT_URI: str = "http://localhost:8000/api/oauth/google/callback"
 
     # CORS Settings
-    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:8000"
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:8000,https://frontend-exx44qzpf-jakobs-projects-bb80ead3.vercel.app,https://frontend-sigma-lac.vercel.app"
 
     model_config = SettingsConfigDict(
         env_file=".env",
