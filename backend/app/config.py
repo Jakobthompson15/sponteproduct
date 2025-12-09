@@ -59,8 +59,3 @@ class Settings(BaseSettings):
 
 # Global settings instance
 settings = Settings()
-
-# Debug: Print the actual DATABASE_URL being used
-import sys
-print(f"DEBUG: DATABASE_URL = {settings.DATABASE_URL}", file=sys.stderr)
-print(f"DEBUG: ENVIRONMENT = {settings.ENVIRONMENT}", file=sys.stderr)
