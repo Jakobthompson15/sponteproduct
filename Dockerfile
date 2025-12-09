@@ -17,11 +17,10 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 # Copy application code
 COPY backend/ .
-COPY test_env.py .
-COPY check_port.py .
+COPY start.py .
 
 # Expose port (Railway will override with PORT env var)
 EXPOSE 8000
 
-# Start the app - Railway sets PORT environment variable
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Start the app using Python script
+CMD ["python", "start.py"]
