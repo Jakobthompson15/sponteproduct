@@ -1,0 +1,26 @@
+# Environment Variables for Railway Deployment
+# Copy these to Railway Dashboard > Variables
+
+# Database (Railway auto-injects DATABASE_URL when you add PostgreSQL)
+# No need to set DATABASE_URL manually
+
+# Required Settings
+ENVIRONMENT=production
+SECRET_KEY=PyKm1N4XN-25RBXgrwcBW7tBDmUSgxtUYpf8pmzuxKs
+CORS_ORIGINS=http://localhost:3000,http://localhost:8000,https://frontend-exx44qzpf-jakobs-projects-bb80ead3.vercel.app,https://frontend-sigma-lac.vercel.app
+
+# Google OAuth
+GOOGLE_CLIENT_ID=1022140656174-cu4j10hs17102f98dn0250ihm67kb63m.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
+GOOGLE_REDIRECT_URI=https://sponteproduct-production.up.railway.app/api/oauth/google/callback
+
+# Clerk Authentication
+CLERK_PUBLISHABLE_KEY=pk_test_aW1tdW5lLXN1bmZpc2gtNTUuY2xlcmsuYWNjb3VudHMuZGV2JA
+CLERK_SECRET_KEY=sk_test_PElmNRoWmsJZUlZILClOgRhJAHMD9EfQjapmqZUliX
+
+# Email Service
+RESEND_API_KEY=re_UfpgPz28_9PYVSPWfMzosL7yagmZZ7VkB
+
+# Optional (leave empty for now)
+ANTHROPIC_API_KEY=
+REDIS_URL=
