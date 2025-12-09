@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
     # Database Configuration
-    DATABASE_URL: str
+    DATABASE_URL: str = "postgresql://postgres:password@localhost/rankingme"
 
     # Supabase Configuration (optional - not used when using direct PostgreSQL)
     SUPABASE_URL: str = ""
