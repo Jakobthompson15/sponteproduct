@@ -1,8 +1,8 @@
 # Environment Variables for Railway Deployment
-# Copy these to Railway Dashboard > Variables
+# Add these to Railway Dashboard > Variables
 
-# Database (Railway auto-injects DATABASE_URL when you add PostgreSQL)
-# No need to set DATABASE_URL manually
+# Database (use the public URL for external connections)
+DATABASE_URL=postgresql://postgres:SIhbtLdLUtHHVonMEtBIaIXfxKBfPTMv@turntable.proxy.rlwy.net:56269/railway
 
 # Required Settings
 ENVIRONMENT=production

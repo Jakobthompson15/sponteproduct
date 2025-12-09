@@ -5,6 +5,7 @@ Loads environment variables from .env file.
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import List
+import os
 
 
 class Settings(BaseSettings):
@@ -45,7 +46,7 @@ class Settings(BaseSettings):
     CORS_ORIGINS: str = "http://localhost:3000,http://localhost:8000,https://frontend-exx44qzpf-jakobs-projects-bb80ead3.vercel.app,https://frontend-sigma-lac.vercel.app"
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=".env" if os.path.exists(".env") else None,
         env_file_encoding="utf-8",
         case_sensitive=True
     )
