@@ -17,7 +17,8 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 # Copy application code
 COPY backend/ .
-COPY start.py .
+# start.py is now included in backend/
+
 
 # Expose port (Railway will override with PORT env var)
 EXPOSE 8000
